@@ -1,3 +1,12 @@
+const btn = document.querySelector("#btn")
+const brunch = document.querySelector("#c1")
+const buffet = document.querySelector("#c2")
+const rice = document.querySelector("#c3")
+const noodle = document.querySelector("#c4")
+const others = document.querySelector("#c5")
+const result = document.querySelector("#result")
+
+
 const mealList = [
     {
         "name": "食在一方",
@@ -61,10 +70,57 @@ const mealList = [
     }
 ]
 
+const checkList = [brunch,buffet,rice,noodle,others]
 
-mealList.forEach(function(i){
-console.log(i.name);
+let getList = []
+let trueList = []
+
+
+btn.addEventListener("click",function(){
+    let getList = []
+    let trueList = []
+    //找勾選的選項
+    trueList = checkList.filter(function(i){
+    
+        console.log(i.checked)
+        if((i.checked) === true){
+            return i;
+        }
+   
+   })
+   console.log(trueList)
+   
+   
+   //從勾選的選項中去找出相對應的餐廳
+   trueList.forEach(function(i){
+    console.log(i)
+    mealList.forEach(function(j){
+        console.log(j)
+        j.category.forEach(function(x){
+            if(x === (i.value)){
+                console.log(x)
+                getList.push(j.name) ;
+            }
+        })
+        })
+   })
+   console.log(getList)
+    
+    // console.log(getList[Math.floor(Math.random()*(getList.length))])
+    if(trueList.length === 0){
+        result.innerText = "至少勾選一個選項拉哭喔"
+    }
+    else{
+    result.innerText = getList[Math.floor(Math.random()*(getList.length))] 
+    console.log(result)
+   }
 })
+
+
+// mealList.forEach(function(i){
+// console.log(i.name);
+
+// })
 
 
 
