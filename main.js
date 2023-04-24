@@ -11,8 +11,8 @@ fetch("mealList.json").then(function(response){
     return response.json();
 })
 .then(function(data){
-    Sourcedata =[...data];
-    console.log(Sourcedata);
+    mealList =[...data];
+    console.log(mealList);
 
 })
 .catch(function(error){
@@ -107,7 +107,7 @@ btn.addEventListener("click",function(){
    //從勾選的選項中去找出相對應的餐廳
    trueList.forEach(function(i){
     console.log(i)
-    Sourcedata.forEach(function(j){
+    mealList.forEach(function(j){
         console.log(j)
         j.category.forEach(function(x){
             if(x === (i.value)){
