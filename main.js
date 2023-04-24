@@ -6,69 +6,82 @@ const noodle = document.querySelector("#c4")
 const others = document.querySelector("#c5")
 const result = document.querySelector("#result")
 
+fetch("mealList.json").then(function(response){
 
-const mealList = [
-    {
-        "name": "食在一方",
-        "category": ["brunch"],
-        "filter": false
-    },
-    {
-        "name": "日十",
-        "category": ["brunch"],
-        "filter": false
-    },
-    {
-        "name": "鹽行站",
-        "category": ["buffet", "rice"],
-        "filter": false
-    },
-    {
-        "name": "鍋燒麵",
-        "category": ["noodle"],
-        "filter": false
-    },
-    {
-        "name": "炒飯",
-        "category": ["rice"],
-        "filter": false
-    },
-    {
-        "name": "八方雲集",
-        "category": ["others"],
-        "filter": false
-    },
-    {
-        "name": "火鍋",
-        "category": ["others"],
-        "filter": false
-    },
-    {
-        "name": "韓式料理",
-        "category": ["rice", "noodle"],
-        "filter": false
-    },
-    {
-        "name": "小飯糰大飯糰",
-        "category": ["rice"],
-        "filter": false
-    },
-    {
-        "name": "後校門滷肉飯",
-        "category": ["rice", "noodle"],
-        "filter": false
-    },
-    {
-        "name": "魚耶",
-        "category": ["brunch", "rice", "noodle"],
-        "filter": false
-    },
-    {
-        "name": "吳家鴨香飯",
-        "category": ["rice", "noodle"],
-        "filter": false
-    }
-]
+    return response.json();
+})
+.then(function(data){
+    Sourcedata =[...data];
+    console.log(Sourcedata);
+
+})
+.catch(function(error){
+    console.log(error);
+})
+
+
+// const mealList = [
+//     {
+//         "name": "食在一方",
+//         "category": ["brunch"],
+//         "filter": false
+//     },
+//     {
+//         "name": "日十",
+//         "category": ["brunch"],
+//         "filter": false
+//     },
+//     {
+//         "name": "鹽行站",
+//         "category": ["buffet", "rice"],
+//         "filter": false
+//     },
+//     {
+//         "name": "鍋燒麵",
+//         "category": ["noodle"],
+//         "filter": false
+//     },
+//     {
+//         "name": "炒飯",
+//         "category": ["rice"],
+//         "filter": false
+//     },
+//     {
+//         "name": "八方雲集",
+//         "category": ["others"],
+//         "filter": false
+//     },
+//     {
+//         "name": "火鍋",
+//         "category": ["others"],
+//         "filter": false
+//     },
+//     {
+//         "name": "韓式料理",
+//         "category": ["rice", "noodle"],
+//         "filter": false
+//     },
+//     {
+//         "name": "小飯糰大飯糰",
+//         "category": ["rice"],
+//         "filter": false
+//     },
+//     {
+//         "name": "後校門滷肉飯",
+//         "category": ["rice", "noodle"],
+//         "filter": false
+//     },
+//     {
+//         "name": "魚耶",
+//         "category": ["brunch", "rice", "noodle"],
+//         "filter": false
+//     },
+//     {
+//         "name": "吳家鴨香飯",
+//         "category": ["rice", "noodle"],
+//         "filter": false
+//     }
+// ]
 
 const checkList = [brunch,buffet,rice,noodle,others]
 
@@ -94,7 +107,7 @@ btn.addEventListener("click",function(){
    //從勾選的選項中去找出相對應的餐廳
    trueList.forEach(function(i){
     console.log(i)
-    mealList.forEach(function(j){
+    Sourcedata.forEach(function(j){
         console.log(j)
         j.category.forEach(function(x){
             if(x === (i.value)){
